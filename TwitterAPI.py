@@ -10,6 +10,7 @@ root.title('Twitter API')
 root.geometry("500x250")
 root.config(bg='red')
 
+#Keys to be added from Twitter API Authentication
 consumer_key = CONSUMER_KEY
 consumer_secret = CONSUMER_SECRET
 access_token = ACCESS_TOKEN
@@ -19,6 +20,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
+#Main Function of the program
 def user_info():
     global md
     md=Tk()
@@ -33,6 +35,7 @@ def user_info():
     search_button=Button(md,text="Search for User",command=query)
     search_button.grid(row=4,column=0)    
 
+#Query function to print Details of the User
 def query():
     global sp
     sp=str(info.get())
@@ -93,9 +96,11 @@ def query():
     del_button.grid(row=22,column=0,pady=(10,0))
     info.delete(0, END)
 
+#Function to exit the GUI
 def close():
     md.destroy()
 
+#Function to tweet a default message
 def publictweet():
     if datetime.date.today().weekday() == 0:
         tweettopublish = 'Hi everyone, today is Monday.   #Monday '
@@ -113,9 +118,10 @@ def publictweet():
         tweettopublish = 'Sunday morning...#Weekend #enjoy '
     api.update_status(tweettopublish)
 
+#Twitter Bot
 def actual_bot():
     root.destroy()
-    text_file = r'C:\Users\Susheel Kaul\upto.txt'
+    text_file = FILE_LOCATION
     def get_upto(fname):
         with open(fname, "r") as fread:
             return str(fread.readline())
@@ -137,14 +143,17 @@ def actual_bot():
         actual_bot1()
         time.sleep(15)
 
+#Function to find number of tweets
 def number_of_tweets():
     info = api.get_user(sp)
     return info.statuses_count
 
+#Function to find number of friends
 def number_of_friends():
     info = api.get_user(sp)
     return info.friends_count
 
+#Function to search tweet information
 def search_tweet():
     dt=Tk()
     dt.geometry("600x600")
@@ -163,6 +172,7 @@ def search_tweet():
     info_retweets.delete(0, END)
     rt.destroy()
 
+#Function to find number of retweets
 def count_number_retweets():#Id=1272479136133627905
     global rt
     rt=Tk()
@@ -181,7 +191,8 @@ def print_public():
     s=info_tweets.get()
     api.update_status(s)
     info_tweets.delete(0, END)
-
+    
+#Function to tweet customized information
 def tweet_public():
     global wt
     wt=Tk()
@@ -200,6 +211,7 @@ def tweet_public():
     search_button=Button(wt,text="Predefined Tweet",command=publictweet)
     search_button.grid(row=4,column=2)
 
+#Starting Window Display of GUI
 info_label=Label(root,text="------------------------------Welcome to Twitter API Application--------------------------------")
 
 info_label.grid(row=0,column=0,pady=(10,50))    
