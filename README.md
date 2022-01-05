@@ -8,11 +8,12 @@ This is a GUI based application that works with Twitter API and allows user to u
 
 
 ## Features of the application for Students:
-1) Automating the process of retweeting on certain kinds of tweets directed towards the user
-2) Gathering information of any Twitter user like 
+1) Print details of a user
+2) Automating the process of retweeting on certain kinds of tweets directed towards the user
+3) Gathering information of any Twitter user like 
 - Number of tweets
 - Number of like tweets
 - Number of friends 
-3) Dispaly information about a particular Tweet
-4) Number of Retweets of a particular Tweet
-5) Tweet Customized Message from the user
+4) Dispaly information about a particular Tweet
+5) Number of Retweets of a particular Tweet
+6) Tweet Customized Message from the user
